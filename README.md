@@ -39,7 +39,7 @@ Acesse <http://localhost:8080>.
 docker compose up --build -d
 ```
 
-O app fica disponível em <http://localhost:8080> (ajuste a porta no
+O app fica disponível em <http://localhost:8084> (ajuste a porta no
 `compose.yaml`). As labels do Traefik já estão prontas — edite o `Host(...)`
 e a porta conforme seu ambiente. A imagem é baseada em `busybox` e não depende
 do submódulo do dicionário em tempo de execução.
