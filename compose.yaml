@@ -12,5 +12,5 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.services.sopalavrinha.loadbalancer.server.port=8083"
-      - "traefik.http.routers.sopalavrinha.rule=Host(`sopalavrinha.${MY_DOMAIN}`)"
+      - "traefik.http.routers.sopalavrinha.rule=Host(`senhas.${MY_DOMAIN}`)"
       - "traefik.http.routers.sopalavrinha.entrypoints=websecure"
