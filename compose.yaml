@@ -8,9 +8,9 @@ services:
     environment:
       - TZ=$TIMEZONE
     ports:
-      - "8083:80"
+      - "8084:80"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.services.sopalavrinha.loadbalancer.server.port=8083"
+      - "traefik.http.services.sopalavrinha.loadbalancer.server.port=8084"
       - "traefik.http.routers.sopalavrinha.rule=Host(`senhas.${MY_DOMAIN}`)"
       - "traefik.http.routers.sopalavrinha.entrypoints=websecure"
