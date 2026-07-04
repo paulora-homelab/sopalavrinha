@@ -96,6 +96,49 @@
     return { text: "excelente", cls: "s-excellent" };
   }
 
+  // --- Tema -----------------------------------------------------------------
+  (function () {
+    const html = document.documentElement;
+    const btn = document.getElementById("theme-toggle");
+    if (!btn) return;
+
+    const ICONS = { light: "☀️", dark: "🌙", system: "🖥️" };
+    const systemQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+    function effectiveTheme(state) {
+      if (state === "dark" || state === "light") return state;
+      return systemQuery.matches ? "dark" : "light";
+    }
+
+    function applyTheme(state) {
+      html.setAttribute("data-theme", effectiveTheme(state));
+      if (state === "system") {
+        localStorage.removeItem("theme");
+      } else {
+        localStorage.setItem("theme", state);
+      }
+      const next = state === "light" ? "dark" : state === "dark" ? "system" : "light";
+      btn.textContent = ICONS[next];
+      btn.title = next === "light" ? "Modo claro" : next === "dark" ? "Modo escuro" : "Seguir sistema";
+    }
+
+    function currentState() {
+      const stored = localStorage.getItem("theme");
+      return stored === "dark" || stored === "light" ? stored : "system";
+    }
+
+    applyTheme(currentState());
+
+    btn.addEventListener("click", () => {
+      const state = currentState();
+      applyTheme(state === "light" ? "dark" : state === "dark" ? "system" : "light");
+    });
+
+    systemQuery.addEventListener("change", () => {
+      if (currentState() === "system") applyTheme("system");
+    });
+  })();
+
   // --- DOM ------------------------------------------------------------------
   const $ = (id) => document.getElementById(id);
 

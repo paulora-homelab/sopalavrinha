@@ -1,9 +1,19 @@
 <!DOCTYPE html>
-<html lang="pt-BR" data-theme="light">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light dark" />
+  <script>
+    (function () {
+      var stored = localStorage.getItem("theme");
+      var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.setAttribute(
+        "data-theme",
+        stored === "dark" || stored === "light" ? stored : (prefersDark ? "dark" : "light")
+      );
+    })();
+  </script>
   <meta name="description" content="Gerador de frases-senha em português do Brasil. Simples, seguro e privado — nada é armazenado." />
   <title>Sopalavrinha — Gerador de frases-senha</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -16,6 +26,7 @@
       <h1>🍜 Sopalavrinha</h1>
       <p>Gerador de frases-senha em português, fáceis de lembrar e difíceis de quebrar.</p>
     </hgroup>
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Alternar tema"></button>
   </header>
 
   <main class="container">
