@@ -1,0 +1,16 @@
+services:
+  sopalavrinha:
+    build: .
+    image: sopalavrinha:latest
+    container_name: sopalavrinha
+    restart: unless-stopped
+    networks: [default]
+    environment:
+      - TZ=$TIMEZONE
+    ports:
+      - "8083:80"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.sopalavrinha.loadbalancer.server.port=8083"
+      - "traefik.http.routers.sopalavrinha.rule=Host(`sopalavrinha.${MY_DOMAIN}`)"
+      - "traefik.http.routers.sopalavrinha.entrypoints=websecure"

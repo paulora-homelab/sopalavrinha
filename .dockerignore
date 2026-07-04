@@ -1,0 +1,6 @@
+dicio-pt-br/
+scripts/
+.git/
+.gitmodules
+*.md
+.claude/

@@ -1,0 +1,125 @@
+/* Small polish on top of Pico.css */
+
+:root {
+  --pico-typography-spacing-vertical: 1rem;
+}
+
+header.container {
+  padding-top: 2.5rem;
+  padding-bottom: 0.5rem;
+  text-align: center;
+}
+
+header hgroup h1 {
+  margin-bottom: 0.25rem;
+}
+
+main.container {
+  max-width: 46rem;
+}
+
+/* Resultado */
+#result-card {
+  text-align: center;
+}
+
+.passphrase {
+  display: block;
+  font-family: var(--pico-font-family-monospace);
+  font-size: clamp(1.1rem, 4vw, 1.6rem);
+  font-weight: 600;
+  line-height: 1.5;
+  word-break: break-word;
+  padding: 0.75rem 0;
+  min-height: 2.5rem;
+  user-select: all;
+}
+
+/* Frase-senha colorida por tipo */
+.pp-word { color: var(--pico-color); }
+.pp-sep { color: var(--pico-primary); font-weight: 400; }
+.pp-sep-space { text-decoration: underline; text-underline-offset: 0.15em; }
+.pp-digit { color: #e8590c; }
+[data-theme="dark"] .pp-digit,
+:root:not([data-theme="light"]) .pp-digit { color: #ffa94d; }
+
+.result-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.result-actions button {
+  width: auto;
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.generate {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Opções */
+label > input[type="range"] {
+  margin-top: 0.35rem;
+}
+
+/* Entropia / força */
+.entropy {
+  font-weight: 600;
+  white-space: nowrap;
+}
+.muted { color: var(--pico-muted-color); font-weight: 400; }
+.s-weak { color: #d93526; }
+.s-ok { color: #b8860b; }
+.s-strong { color: #2e8b57; }
+.s-excellent { color: #1a7f37; }
+
+/* Histórico */
+.history-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.history-header h2 { margin-bottom: 0; font-size: 1.25rem; }
+.history-header button { width: auto; margin-bottom: 0; flex-shrink: 0; }
+
+.history-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+}
+.history-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0;
+  border-top: 1px solid var(--pico-muted-border-color);
+}
+.history-phrase {
+  flex: 1 1 auto;
+  word-break: break-word;
+  background: transparent;
+  padding: 0;
+}
+.history-list .entropy {
+  flex-shrink: 0;
+  font-size: 0.8rem;
+}
+.history-copy {
+  width: auto;
+  margin-bottom: 0;
+  flex-shrink: 0;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.8rem;
+}
+
+footer.container {
+  text-align: center;
+  padding: 2rem 1rem 3rem;
+}
+footer p { margin-bottom: 0.5rem; }

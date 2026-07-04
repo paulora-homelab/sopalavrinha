@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="description" content="Gerador de frases-senha em português do Brasil. Simples, seguro e privado — nada é armazenado." />
+  <title>Sopalavrinha — Gerador de frases-senha</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/pico.min.css" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="container">
+    <hgroup>
+      <h1>🍜 Sopalavrinha</h1>
+      <p>Gerador de frases-senha em português, fáceis de lembrar e difíceis de quebrar.</p>
+    </hgroup>
+  </header>
+
+  <main class="container">
+    <!-- Resultado -->
+    <article id="result-card" aria-live="polite">
+      <output id="passphrase" class="passphrase">Clique em <strong>Gerar</strong> para começar</output>
+      <div class="result-actions">
+        <small id="entropy" class="entropy muted"></small>
+        <button id="copy-btn" class="secondary outline" type="button" disabled>Copiar</button>
+      </div>
+    </article>
+
+    <button id="generate-btn" type="button" class="generate">Gerar frase-senha</button>
+
+    <!-- Opções -->
+    <article>
+      <details open>
+        <summary>Opções</summary>
+        <div class="grid">
+          <label>
+            Número de palavras: <strong id="words-value">5</strong>
+            <input type="range" id="words" min="3" max="10" value="5" />
+          </label>
+          <label>
+            Separador
+            <select id="separator">
+              <option value="-" selected>Hífen ( - )</option>
+              <option value=".">Ponto ( . )</option>
+              <option value="_">Sublinhado ( _ )</option>
+              <option value=" ">Espaço (  )</option>
+              <option value="">Nenhum</option>
+            </select>
+          </label>
+          <label>
+            Maiúsculas
+            <select id="capitalization">
+              <option value="none" selected>nenhuma</option>
+              <option value="each">Inicial De Cada Palavra</option>
+              <option value="upper">TODAS MAIÚSCULAS</option>
+            </select>
+          </label>
+        </div>
+        <fieldset>
+          <label>
+            <input type="checkbox" id="add-digit" role="switch" checked />
+            Acrescentar um número ao final
+          </label>
+          <label>
+            <input type="checkbox" id="strip-accents" role="switch" checked />
+            Remover acentos (mais fácil de digitar)
+          </label>
+        </fieldset>
+      </details>
+    </article>
+
+    <!-- Por que? -->
+    <article>
+      <details>
+        <summary>Por que usar frases-senha?</summary>
+        <p>
+          Uma <strong>frase-senha</strong> é composta por várias palavras aleatórias
+          — como <code>gato-vidro-nuvem-forte</code>. Ela é ao mesmo tempo
+          <strong>fácil de lembrar</strong> e <strong>difícil de adivinhar</strong>.
+        </p>
+        <p>
+          Senhas curtas e complicadas como <code>P@ss1!</code> são um pesadelo para
+          lembrar e, ainda assim, fracas contra ataques automatizados. Cada palavra
+          extra numa frase-senha multiplica o número de combinações possíveis: com
+          este dicionário de <strong>7.776 palavras</strong>, cada palavra adiciona
+          cerca de <strong>12,9 bits</strong> de entropia. Cinco palavras já
+          ultrapassam 64 bits — mais forte do que a maioria das senhas tradicionais.
+        </p>
+        <p class="muted">
+          <small>A ideia ficou famosa pela tirinha
+          <a href="https://xkcd.com/936/" target="_blank" rel="noopener">xkcd 936</a>:
+          «através de 20 anos de esforço, treinamos todo mundo a usar senhas difíceis
+          para humanos lembrarem, mas fáceis para computadores adivinharem».</small>
+        </p>
+      </details>
+    </article>
+
+    <!-- Histórico -->
+    <article id="history-card">
+      <div class="history-header">
+        <h2>Histórico da sessão</h2>
+        <button id="clear-history" class="secondary outline" type="button" disabled>Limpar</button>
+      </div>
+      <p id="history-empty" class="muted"><small>As frases-senha geradas aparecerão aqui. Nada é salvo: ao recarregar a página, o histórico é apagado.</small></p>
+      <ul id="history-list" class="history-list"></ul>
+    </article>
+  </main>
+
+  <footer class="container">
+    <p class="muted"><small>
+      <strong>Sopalavrinha?</strong> É uma brincadeira com «sopa de palavrinhas»,
+      que por sua vez vem de «sopa de letrinhas». 🍜
+    </small></p>
+    <p class="muted"><small>
+      🔒 Tudo acontece no seu navegador. Nada é enviado, salvo ou rastreado —
+      nem cookies, nem armazenamento local.
+    </small></p>
+  </footer>
+
+  <script src="assets/wordlist.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
